@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Commander Deck Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel" aria-label="Deck preferences">
+        <div class="brand-row">
+          <div class="mana-orbit" aria-hidden="true">
+            <span class="mana mana-w">W</span>
+            <span class="mana mana-u">U</span>
+            <span class="mana mana-b">B</span>
+            <span class="mana mana-r">R</span>
+            <span class="mana mana-g">G</span>
+          </div>
+          <div>
+            <h1>Commander Deck Coach</h1>
+            <p>Pick a vibe, budget, and pace. Get three beginner-safe directions.</p>
+          </div>
+        </div>
+        <form id="coach-form">
+          <fieldset>
+            <legend>Colors</legend>
+            <div class="color-grid" role="group" aria-label="Favorite colors">
+              <label class="color-toggle color-w"><input type="checkbox" name="colors" value="W" /> White</label>
+              <label class="color-toggle color-u"><input type="checkbox" name="colors" value="U" checked /> Blue</label>
+              <label class="color-toggle color-b"><input type="checkbox" name="colors" value="B" checked /> Black</label>
+              <label class="color-toggle color-r"><input type="checkbox" name="colors" value="R" /> Red</label>
+              <label class="color-toggle color-g"><input type="checkbox" name="colors" value="G" checked /> Green</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Pace</legend>
+            <div class="segmented">
+              <label><input type="radio" name="pace" value="fast" /> Fast</label>
+              <label><input type="radio" name="pace" value="midrange" checked /> Midrange</label>
+              <label><input type="radio" name="pace" value="slow" /> Slow</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Style</legend>
+            <div class="two-col">
+              <label>Flavor<select name="flavor"><option value="cute">Cute</option><option value="vicious" selected>Vicious</option><option value="tricky">Tricky</option><option value="epic">Epic</option></select></label>
+              <label>Strategy<select name="strategy"><option value="attack">Attack</option><option value="combo">Combo</option><option value="control">Control</option><option value="value" selected>Value</option><option value="creatures">Creatures</option></select></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Budget And Table</legend>
+            <div class="two-col">
+              <label>Budget tier<select name="budget"><option value="starter" selected>Starter</option><option value="friendly">Friendly</option><option value="upgraded">Upgraded</option><option value="premium">Premium</option></select></label>
+              <label>Power level<select name="power"><option value="precon">Precon</option><option value="casual" selected>Casual</option><option value="high">High</option><option value="competitive">Competitive</option></select></label>
+            </div>
+            <label class="range-label">Total budget <strong id="budget-value">$75</strong><input type="range" name="totalBudget" min="40" max="500" value="75" step="5" /></label>
+            <label>Complexity<select name="complexity"><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></label>
+          </fieldset>
+          <div class="actions">
+            <button class="primary" type="submit">Generate Directions</button>
+            <button class="ghost" type="button" id="reset-button" title="Reset preferences">Reset</button>
+          </div>
+        </form>
+      </section>
+      <section class="results-panel" aria-live="polite">
+        <div class="results-header"><div><p class="eyebrow">Starter Directions</p><h2 id="summary-title">BGU Midrange Value</h2></div><div class="confidence">Reviewed</div></div>
+        <div class="table-note">These are beginner deck directions to explore, not finished 99-card lists. A final deck still needs a legal commander, mana base, role counts, legality checks, and table fit.</div>
+        <div id="directions" class="directions"></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
